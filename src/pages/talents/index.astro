@@ -344,7 +344,7 @@ import { talentData } from '../../data/talents';
   // Filter functionality for talents
   document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const talentCards = document.querySelectorAll('.talent-card');
+    const talentCards = document.querySelectorAll('.talent-card') as NodeListOf<HTMLElement>;
     
     // Back to top button
     const backToTop = document.querySelector('.back-to-top');
