@@ -1,0 +1,385 @@
+---
+// Talents list page showing all talents
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { talentData } from '../../data/talents';
+---
+
+<Layout title="タレント一覧 | petal エンターテインメント">
+  <Header />
+  
+  <main class="talents-page">
+    <div class="page-header">
+      <div class="container">
+        <h1 class="page-title" data-aos="fade-up">TALENT</h1>
+        <p class="page-description" data-aos="fade-up" data-aos-delay="200">
+          petalエンターテインメント所属タレント一覧
+        </p>
+      </div>
+    </div>
+    
+    <section class="talents-list">
+      <div class="container">
+        <div class="talents-filter" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">全て</button>
+          <button class="filter-btn" data-filter="actor">俳優・女優</button>
+          <button class="filter-btn" data-filter="model">モデル</button>
+          <button class="filter-btn" data-filter="singer">歌手</button>
+          <button class="filter-btn" data-filter="influencer">インフルエンサー</button>
+          <button class="filter-btn" data-filter="voice">声優</button>
+          <button class="filter-btn" data-filter="dancer">ダンサー</button>
+        </div>
+        
+        <div class="talents-grid grid grid-3">
+          {talentData.map((talent, index) => (
+            <div 
+              class="talent-card" 
+              data-aos="fade-up" 
+              data-aos-delay={100 * (index % 3 + 1)} 
+              data-category={talent.category.includes('俳優') ? 'actor' : 
+                            talent.category.includes('モデル') ? 'model' : 
+                            talent.category.includes('歌手') ? 'singer' : 
+                            talent.category.includes('インフルエンサー') ? 'influencer' : 
+                            talent.category.includes('声優') ? 'voice' : 
+                            talent.category.includes('ダンサー') ? 'dancer' : 'other'}
+            >
+              <div class="talent-image">
+                <img src={talent.image} alt={talent.name} />
+                <div class="talent-overlay">
+                  <a href={`/talents/${talent.id}`} class="talent-view-profile">
+                    プロフィールを見る
+                  </a>
+                </div>
+              </div>
+              <div class="talent-info">
+                <h2 class="talent-name">{talent.name}</h2>
+                <p class="talent-name-en">{talent.nameEn}</p>
+                <p class="talent-category">{talent.category}</p>
+                <div class="talent-social">
+                  {talent.social.twitter && (
+                    <a href={talent.social.twitter} target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                  )}
+                  {talent.social.instagram && (
+                    <a href={talent.social.instagram} target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                  )}
+                  {talent.social.youtube && (
+                    <a href={talent.social.youtube} target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-youtube"></i>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+  
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+</Layout>
+
+<style>
+  .talents-page {
+    padding-top: 80px;
+  }
+  
+  .page-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--space-xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1556484687-30636164638b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  .page-title {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: var(--space-xs);
+    text-align: center;
+  }
+  
+  .page-description {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0.9;
+  }
+  
+  .talents-list {
+    padding: var(--space-xl) 0;
+  }
+  
+  .talents-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xl);
+  }
+  
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--color-text-light);
+    color: var(--color-text);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+  
+  .talents-grid {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .talent-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .talent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .talent-image {
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .talent-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .talent-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .talent-card:hover .talent-image img {
+    transform: scale(1.05);
+  }
+  
+  .talent-card:hover .talent-overlay {
+    opacity: 1;
+  }
+  
+  .talent-view-profile {
+    color: white;
+    background-color: var(--color-primary);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .talent-card:hover .talent-view-profile {
+    transform: translateY(0);
+  }
+  
+  .talent-view-profile:hover {
+    background-color: var(--color-primary-light);
+  }
+  
+  .talent-info {
+    padding: var(--space-md);
+    text-align: center;
+  }
+  
+  .talent-name {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-2xs);
+  }
+  
+  .talent-name-en {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .talent-category {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .talent-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+  }
+  
+  .talent-social a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .talent-social a:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+  }
+  
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    z-index: 99;
+  }
+  
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .back-to-top:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-5px);
+  }
+  
+  /* Responsive grid adjustments */
+  @media (max-width: 992px) {
+    .talents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .talents-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .talents-filter {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: var(--space-xs);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .filter-btn {
+      flex: 0 0 auto;
+    }
+  }
+</style>
+
+<script>
+  // Filter functionality for talents
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const talentCards = document.querySelectorAll('.talent-card');
+    
+    // Back to top button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop?.classList.add('visible');
+      } else {
+        backToTop?.classList.remove('visible');
+      }
+    });
+    
+    // Filter talents by category
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filter = btn.getAttribute('data-filter');
+        
+        talentCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'block';
+          } else {
+            const category = card.getAttribute('data-category');
+            if (category === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  });
+</script>

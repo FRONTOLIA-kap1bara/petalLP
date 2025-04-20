@@ -1,0 +1,77 @@
+---
+// Main index page for the petal entertainment website
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Topics from '../components/Topics.astro';
+import News from '../components/News.astro';
+import Talents from '../components/Talents.astro';
+import Recruit from '../components/Recruit.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="petal | あなた好みにカスタマイズできる契約形態！">
+  <Header />
+  <Hero />
+  <Topics />
+  <News />
+  <Talents />
+  <Recruit />
+  <Contact />
+  <Footer />
+  
+  <!-- Back to top button -->
+  <a href="#" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+</Layout>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    z-index: 99;
+  }
+  
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .back-to-top:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-5px);
+  }
+</style>
+
+<script>
+  // Back to top button visibility
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop?.classList.add('visible');
+      } else {
+        backToTop?.classList.remove('visible');
+      }
+    });
+  });
+</script>

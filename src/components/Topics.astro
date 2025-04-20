@@ -1,0 +1,140 @@
+---
+// Topics section with featured highlights
+---
+
+<section id="topics" class="topics">
+  <div class="container">
+    <h2 class="section-title text-center" data-aos="fade-up">TOPICS</h2>
+    
+    <div class="topics-grid grid grid-3">
+      <!-- Topic 1 -->
+      <div class="topic-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="topic-image">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80" alt="カスタマイズ契約" />
+        </div>
+        <div class="topic-content">
+          <h3>カスタマイズ契約</h3>
+          <p>あなたのニーズに合わせた柔軟な契約プランをご用意しています。マネジメント、エージェント、単発出演など、様々なスタイルから選べます。</p>
+        </div>
+      </div>
+      
+      <!-- Topic 2 -->
+      <div class="topic-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="topic-image">
+          <img src="https://images.unsplash.com/photo-1624913503273-5f9c4e980dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=776&q=80" alt="オリジナルグッズ" />
+        </div>
+        <div class="topic-content">
+          <h3>オリジナルグッズ</h3>
+          <p>タレント専用のオリジナルグッズ制作・販売を行っています。ファンの皆様に喜ばれる高品質な商品をお届けします。</p>
+        </div>
+      </div>
+      
+      <!-- Topic 3 -->
+      <div class="topic-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="topic-image">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1032&q=80" alt="イベント出演" />
+        </div>
+        <div class="topic-content">
+          <h3>イベント出演</h3>
+          <p>様々なイベントへのタレント派遣を行っています。企業イベント、トークショー、ライブなど、多様なシーンに対応します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .topics {
+    background-color: var(--color-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .topics::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background-color: var(--color-primary-lighter);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 0;
+  }
+  
+  .topics::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background-color: var(--color-primary-lighter);
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  .topics-grid {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .topic-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .topic-image {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .topic-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .topic-card:hover .topic-image img {
+    transform: scale(1.05);
+  }
+  
+  .topic-content {
+    padding: var(--space-md);
+  }
+  
+  .topic-content h3 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.3rem;
+    color: var(--color-text);
+  }
+  
+  .topic-content p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+  
+  /* Responsive grid adjustments */
+  @media (max-width: 992px) {
+    .topics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .topics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

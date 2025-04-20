@@ -1,0 +1,181 @@
+---
+// News section with Notion embed capability
+---
+
+<section id="news" class="news">
+  <div class="container">
+    <h2 class="section-title text-center" data-aos="fade-up">NEWS</h2>
+    
+    <div class="news-content" data-aos="fade-up" data-aos-delay="200">
+      <!-- News items -->
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-date">2025.04.15</div>
+          <div class="news-category">イベント</div>
+          <h3 class="news-title">春の新人発表会を開催します</h3>
+          <p class="news-excerpt">
+            4月30日(土)に東京にて新人タレント発表会を開催します。詳細はこちらから確認できます。
+          </p>
+        </div>
+        
+        <div class="news-item">
+          <div class="news-date">2025.04.01</div>
+          <div class="news-category">グッズ</div>
+          <h3 class="news-title">新作グッズ販売開始のお知らせ</h3>
+          <p class="news-excerpt">
+            春の新作グッズの販売を開始しました。限定デザインのアイテムもありますのでお早めにご確認ください。
+          </p>
+        </div>
+        
+        <div class="news-item">
+          <div class="news-date">2025.03.20</div>
+          <div class="news-category">メディア</div>
+          <h3 class="news-title">テレビ番組出演情報</h3>
+          <p class="news-excerpt">
+            当社所属タレントが3月25日(土)20時からのバラエティ番組「ハッピースター」に出演します。ぜひご覧ください。
+          </p>
+        </div>
+      </div>
+      
+      <!-- Notion embed placeholder -->
+      <div class="notion-embed" data-aos="fade-up" data-aos-delay="400">
+        <div class="notion-embed-placeholder">
+          <h3>Notionコンテンツを埋め込む</h3>
+          <p>ここにNotion埋め込みコードを追加してください。</p>
+          <code>
+            &lt;iframe src="https://your-notion-page.notion.site/embed" width="100%" height="600" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+          </code>
+          <p class="note">※実際のサイト構築時に上記コメントを削除し、Notionの埋め込みコードを設置してください。</p>
+        </div>
+      </div>
+      
+      <div class="news-more">
+        <a href="#" class="btn btn-primary">
+          ニュース一覧を見る
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .news {
+    background-color: white;
+    position: relative;
+  }
+  
+  .news::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  }
+  
+  .news-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .news-list {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .news-item {
+    padding: var(--space-md);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease;
+  }
+  
+  .news-item:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+  
+  .news-date {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-2xs);
+  }
+  
+  .news-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .news-title {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+    transition: color 0.2s ease;
+  }
+  
+  .news-item:hover .news-title {
+    color: var(--color-primary);
+  }
+  
+  .news-excerpt {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+  
+  .notion-embed {
+    margin: var(--space-xl) 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+  }
+  
+  .notion-embed-placeholder {
+    background-color: #f7f7f7;
+    padding: var(--space-md);
+    border: 1px dashed #ccc;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .notion-embed-placeholder code {
+    display: block;
+    background-color: #eee;
+    padding: var(--space-sm);
+    margin: var(--space-sm) 0;
+    border-radius: 6px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+  }
+  
+  .note {
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+    margin-top: var(--space-sm);
+  }
+  
+  .news-more {
+    text-align: center;
+  }
+  
+  .news-more .btn i {
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+  }
+  
+  .news-more .btn:hover i {
+    transform: translateX(4px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .news-item {
+      padding: var(--space-sm);
+    }
+  }
+</style>

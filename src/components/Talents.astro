@@ -1,0 +1,205 @@
+---
+// Talents section showcasing talent profiles
+import { talentData } from '../data/talents';
+---
+
+<section id="talents" class="talents">
+  <div class="container">
+    <h2 class="section-title text-center" data-aos="fade-up">TALENT</h2>
+    
+    <div class="talents-grid grid grid-4">
+      {talentData.slice(0, 4).map((talent, index) => (
+        <div class="talent-card" data-aos="fade-up" data-aos-delay={100 * (index + 1)}>
+          <div class="talent-image">
+            <img src={talent.image} alt={talent.name} />
+          </div>
+          <div class="talent-info">
+            <h3 class="talent-name">{talent.name}</h3>
+            <p class="talent-category">{talent.category}</p>
+            <div class="talent-social">
+              {talent.social.twitter && (
+                <a href={talent.social.twitter} target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              )}
+              {talent.social.instagram && (
+                <a href={talent.social.instagram} target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              )}
+              {talent.social.youtube && (
+                <a href={talent.social.youtube} target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              )}
+            </div>
+          </div>
+          <a href={`/talents/${talent.id}`} class="talent-link">
+            詳細を見る <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="talents-more" data-aos="fade-up">
+      <a href="/talents" class="btn btn-primary">
+        タレント一覧を見る
+        <i class="fas fa-users"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .talents {
+    background-color: var(--color-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .talents::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: var(--color-primary-lighter);
+    border-radius: 50%;
+    opacity: 0.2;
+  }
+  
+  .talents::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background-color: var(--color-primary-lighter);
+    border-radius: 50%;
+    opacity: 0.2;
+  }
+  
+  .talents-grid {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .talent-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  .talent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .talent-image {
+    height: 280px;
+    overflow: hidden;
+  }
+  
+  .talent-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .talent-card:hover .talent-image img {
+    transform: scale(1.05);
+  }
+  
+  .talent-info {
+    padding: var(--space-sm);
+    text-align: center;
+  }
+  
+  .talent-name {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-2xs);
+    color: var(--color-text);
+  }
+  
+  .talent-category {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-xs);
+  }
+  
+  .talent-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+  }
+  
+  .talent-social a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .talent-social a:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+  }
+  
+  .talent-link {
+    display: block;
+    text-align: center;
+    padding: var(--space-xs);
+    background-color: #f8f8f8;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .talent-link i {
+    margin-left: 5px;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .talent-card:hover .talent-link {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .talent-card:hover .talent-link i {
+    transform: translateX(3px);
+  }
+  
+  .talents-more {
+    text-align: center;
+  }
+  
+  .talents-more .btn i {
+    margin-left: 8px;
+  }
+  
+  /* Responsive grid adjustments */
+  @media (max-width: 992px) {
+    .talents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .talents-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

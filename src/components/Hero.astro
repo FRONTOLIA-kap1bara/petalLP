@@ -1,0 +1,149 @@
+---
+// Hero section with main visual, logo and catchphrase
+---
+
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <div class="hero-logo" data-aos="fade-up" data-aos-delay="200">
+      <img src="/petallogo.png" alt="petal" class="logo-img" />
+      <h1 class="logo-text">petal</h1>
+    </div>
+    
+    <h2 class="hero-catchphrase" data-aos="fade-up" data-aos-delay="400">
+      あなた好みにカスタマイズできる<span class="text-highlight">契約形態！</span>
+    </h2>
+    
+    <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
+      グッズ販売からエージェント、マネジメント契約まで行います。
+    </p>
+    
+    <div class="hero-cta" data-aos="fade-up" data-aos-delay="800">
+      <a href="#talents" class="btn btn-primary">タレントを見る</a>
+    </div>
+    
+    <div class="scroll-indicator bounce">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    height: 100vh;
+    min-height: 600px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.8) 0%, rgba(255, 107, 139, 0.6) 100%);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 var(--space-md);
+  }
+  
+  .hero-logo {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .logo-img {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-xs);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+  }
+  
+  .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hero-catchphrase {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    line-height: 1.3;
+  }
+  
+  .text-highlight {
+    display: inline-block;
+    position: relative;
+    color: white;
+    padding: 0 0.2em;
+  }
+  
+  .text-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    z-index: -1;
+  }
+  
+  .hero-description {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    margin-bottom: var(--space-xl);
+    opacity: 0.9;
+  }
+  
+  .hero-cta {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .btn-primary {
+    font-size: 1.1rem;
+    padding: 0.85rem 2rem;
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    opacity: 0.8;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero {
+      background-attachment: scroll;
+    }
+    
+    .hero-content {
+      padding: 0 var(--space-sm);
+    }
+    
+    .logo-img {
+      width: 90px;
+      height: 90px;
+    }
+  }
+</style>

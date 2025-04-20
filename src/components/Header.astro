@@ -1,0 +1,187 @@
+---
+// Header component with navigation
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo">
+        <img src="/petallogo.png" alt="petal" width="60" height="60" />
+        <span>petal</span>
+      </a>
+      
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="/#hero">Home</a></li>
+          <li><a href="/#topics">Topics</a></li>
+          <li><a href="/#news">News</a></li>
+          <li><a href="/#talents">Talents</a></li>
+          <li><a href="/#recruit">Recruit</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <button class="mobile-toggle" aria-label="Menu toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('.nav');
+    
+    mobileToggle?.addEventListener('click', () => {
+      mobileToggle.classList.toggle('active');
+      nav?.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on links
+    const navLinks = document.querySelectorAll('.nav-list a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileToggle?.classList.remove('active');
+        nav?.classList.remove('active');
+      });
+    });
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xs) 0;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  
+  .logo img {
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover img {
+    transform: rotate(10deg);
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+  }
+  
+  .nav-list a {
+    position: relative;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-list a:hover {
+    color: var(--color-primary);
+  }
+  
+  .nav-list a:hover::after {
+    width: 100%;
+  }
+  
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+  }
+  
+  .mobile-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      height: 100vh;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav.active {
+      right: 0;
+    }
+    
+    .nav-list {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    
+    .mobile-toggle {
+      display: block;
+    }
+    
+    .mobile-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+</style>
